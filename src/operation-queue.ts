@@ -1,5 +1,5 @@
 export class OperationQueue {
-    private queued: (() => void)[] = [];
+    private readonly queued: (() => void)[] = [];
     private processing: boolean = false;
 
     execute(func: () => void) {
