@@ -36,6 +36,15 @@ describe('reusable pool', () => {
         expect(factory).toHaveBeenCalledTimes(1);
     });
 
+    it('can only give a value back once', () => {
+        const obj1 = pool.take();
+        pool.give(obj1);
+        pool.give(obj1);
+
+        expect(pool.take()).toBe(obj1);
+        expect(pool.take()).not.toBe(obj1);
+    });
+
     it('can prepare values', () => {
         pool.prepare(3);
 
