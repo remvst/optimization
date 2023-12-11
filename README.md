@@ -1,7 +1,3 @@
-# client-inputs
+# optimization
 
-Helper to manage keyboard/mouse/gamepad inputs.
-
-## Usage
-
-See `demo/`.
+Various optimizations utils.
