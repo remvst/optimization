@@ -2,8 +2,7 @@ class LazyValue<T> {
     private initialized = false;
     private cachedValue: T | null = null;
 
-    constructor(private readonly getValue: () => T) {
-    }
+    constructor(private readonly getValue: () => T) {}
 
     value(): T {
         if (!this.initialized) {

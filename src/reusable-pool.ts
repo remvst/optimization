@@ -1,15 +1,18 @@
-import objectId from "./object-id";
+import { objectId } from "./object-id";
 
 export interface ReusablePoolBindable {
     pool: ReusablePool<any>;
 }
 
 export class ReusablePool<ObjectType extends any> {
-
     readonly objects: ObjectType[] = [];
     private readonly itemIds = new Set<number>();
 
-    constructor(private readonly prepareObject: (pool: ReusablePool<ObjectType>) => ObjectType) {}
+    constructor(
+        private readonly prepareObject: (
+            pool: ReusablePool<ObjectType>,
+        ) => ObjectType,
+    ) {}
 
     private prepareSingleObject(): ObjectType {
         const object = this.prepareObject(this);
@@ -18,7 +21,7 @@ export class ReusablePool<ObjectType extends any> {
     }
 
     prepare(count: number): this {
-        for (let i = 0 ; i < count ; i++) {
+        for (let i = 0; i < count; i++) {
             this.objects.push(this.prepareSingleObject());
         }
         return this;

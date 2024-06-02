@@ -23,4 +23,4 @@ export class OperationQueue {
 
         this.maybeProcess();
     }
-};
+}
