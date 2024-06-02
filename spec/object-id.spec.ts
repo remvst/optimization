@@ -1,4 +1,4 @@
-import objectId from "../src/object-id";
+import { objectId } from "../src/object-id";
 
 describe("objectId", () => {
     it("will only assign to an object once", () => {
