@@ -6,14 +6,10 @@ export interface ReusablePoolBindable {
 
 export class ReusablePool<ObjectType extends any> {
 
-    private readonly prepareObject: (pool: ReusablePool<ObjectType>) => ObjectType
-    readonly objects: ObjectType[];
+    readonly objects: ObjectType[] = [];
     private readonly itemIds = new Set<number>();
 
-    constructor(prepareObject: (pool: ReusablePool<ObjectType>) => ObjectType) {
-        this.prepareObject = prepareObject;
-        this.objects = [];
-    }
+    constructor(private readonly prepareObject: (pool: ReusablePool<ObjectType>) => ObjectType) {}
 
     private prepareSingleObject(): ObjectType {
         const object = this.prepareObject(this);
