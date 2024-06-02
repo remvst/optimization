@@ -5,6 +5,10 @@ export class ValueChangeHelper<T> {
         this.value = null;
     }
 
+    get() {
+        return this.value;
+    }
+
     requiresUpdate(newValue: T): boolean {
         if (newValue === this.value) {
             return false;

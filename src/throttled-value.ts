@@ -1,20 +1,16 @@
 export class ThrottledValue<ValueType> {
     private readonly interval: () => number;
-    private readonly currentTime: () => number;
-    private readonly compute: () => ValueType;
 
     private lastCheck: number | null = null;
     private lastValue: ValueType | null = null;
 
     constructor(
         interval: number | (() => number),
-        currentTime: () => number,
-        compute: () => ValueType,
+        private readonly currentTime: () => number,
+        private readonly compute: () => ValueType,
     ) {
         this.interval =
             typeof interval === "number" ? () => interval : interval;
-        this.currentTime = currentTime;
-        this.compute = compute;
     }
 
     get value(): ValueType {
@@ -27,6 +23,10 @@ export class ThrottledValue<ValueType> {
             this.lastValue = this.compute();
         }
         return this.lastValue!;
+    }
+
+    get(): ValueType {
+        return this.value;
     }
 
     reset() {
