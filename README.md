@@ -76,3 +76,17 @@ if (languageValue.requiresUpdate(navigator.language)) {
 // (Optional) Reset when relevant
 languageValue.reset();
 ```
+
+## RollingAverage
+
+```typescript
+const rollingAvg = new RollingAverage(10);
+
+// On each frame, record the framerate
+function onFrame() {
+    rollingAverage.record(performance.now(), framerate);
+}
+
+// Get the average framerate over the last 10 frames
+console.log(rollingAverage.average);
+```
