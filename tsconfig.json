@@ -11,7 +11,8 @@
         "moduleResolution": "node",
         "allowJs": false,
         "outDir": "./lib/esm",
-        "skipLibCheck": true
+        "skipLibCheck": true,
+        "sourceMap": true
     },
     "include": ["./src/**/*"],
     "exclude": ["node_modules"]
