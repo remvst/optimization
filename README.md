@@ -1,6 +1,14 @@
+![Build status](https://github.com/remvst/optimization/actions/workflows/check.yaml/badge.svg)
+
 # optimization
 
 Various optimizations utils.
+
+## Installation
+
+```sh
+npm install @remvst/optimization
+```
 
 ## ReusablePool
 
