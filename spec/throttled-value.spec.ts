@@ -50,4 +50,37 @@ describe("throttled value", () => {
 
         expect(factory).toHaveBeenCalledTimes(2);
     });
+
+    it("may early expire the value", () => {
+        const earlyExpire = jasmine.createSpy().and.returnValue(false);
+        value.earlyExpireIf(earlyExpire);
+
+        factory.and.returnValues(123, 456);
+        expect(value.get()).toBe(123);
+        expect(value.get()).toBe(123);
+
+        // Given the value is now considered stale
+        earlyExpire.and.returnValue(true);
+
+        // Then the next fetch should recompute the value
+        expect(value.get()).toBe(456);
+        expect(factory).toHaveBeenCalledTimes(2);
+    });
+
+    it("may keep the value even after it expires", () => {
+        const keepCachedValue = jasmine.createSpy().and.returnValue(false);
+        value.keepCachedValueIf(keepCachedValue);
+
+        factory.and.returnValues(123, 456);
+        expect(value.get()).toBe(123);
+        expect(value.get()).toBe(123);
+
+        // Given the value is now expired
+        time = INTERVAL * 99;
+        keepCachedValue.and.returnValue(true);
+
+        // Then the next fetch should not recompute the value
+        expect(value.get()).toBe(123);
+        expect(factory).toHaveBeenCalledTimes(1);
+    });
 });
