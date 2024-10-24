@@ -1,4 +1,5 @@
 export * from "./lazy";
+export * from "./lazy-pool";
 export * from "./object-id";
 export * from "./operation-queue";
 export * from "./reusable-pool";
