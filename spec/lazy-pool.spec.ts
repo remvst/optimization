@@ -62,6 +62,17 @@ describe("a lazy pool", () => {
         expect(cleanupItem).toHaveBeenCalledWith(createdValue2);
     });
 
+    it("will check that the same function is provided for the same key", () => {
+        pool.getOrCreate("foo", () => 123);
+        expect(() => pool.getOrCreate("foo", () => 123)).toThrow();
+    });
+
+    it("will not check that the same function is provided if the flag is set to false", () => {
+        pool.checkInconsistencies = false;
+        pool.getOrCreate("foo", () => 123);
+        expect(() => pool.getOrCreate("foo", () => 123)).not.toThrow();
+    });
+
     it("will create a new value if the key is different", () => {
         const createdValue1 = { val1: true };
         const createdValue2 = { val2: true };
