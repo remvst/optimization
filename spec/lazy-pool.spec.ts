@@ -1,4 +1,4 @@
-import { LazyPool } from "./../src/lazy-pool";
+import { LazyPool } from "./../src";
 
 describe("a lazy pool", () => {
     let makeEntry: jasmine.Spy<() => any>;

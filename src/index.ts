@@ -1,6 +1,7 @@
 export * from "./lazy";
 export * from "./lazy-map";
 export * from "./lazy-pool";
+export * from "./multi-value-change-helper";
 export * from "./object-id";
 export * from "./operation-queue";
 export * from "./reusable-pool";

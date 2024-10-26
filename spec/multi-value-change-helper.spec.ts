@@ -1,4 +1,4 @@
-import { MultiValueChangeHelper } from "./../src/multi-value-change-helper";
+import { MultiValueChangeHelper } from "../src";
 
 describe("a multi value change helper", () => {
     let helper: MultiValueChangeHelper<any>;
