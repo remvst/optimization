@@ -1,8 +1,8 @@
 export class LazyPool<ItemType> {
     private readonly items = new Map<string, ItemType>();
-    private readonly functions = new Map<string, () => ItemType>();
+    private readonly functions = new Map<string, string>();
 
-    checkInconsistencies = true;
+    checkInconsistencies = false;
 
     getOrCreate<Type extends ItemType>(key: string, create: () => Type): Type {
         let item = this.items.get(key);
@@ -10,12 +10,12 @@ export class LazyPool<ItemType> {
             item = create();
             this.items.set(key, item);
             if (this.checkInconsistencies) {
-                this.functions.set(key, create);
+                this.functions.set(key, create.toString());
             }
         } else {
             if (
                 this.checkInconsistencies &&
-                this.functions.get(key) !== create
+                this.functions.get(key) !== create.toString()
             ) {
                 throw new Error(`Different function provided for key ${key}`);
             }
