@@ -90,3 +90,18 @@ function onFrame() {
 // Get the average framerate over the last 10 frames
 console.log(rollingAverage.average);
 ```
+
+## VersionedValue
+
+```typescript
+const versionedArray = new VersionedValue([]);
+
+// Update the contents
+versionedArray.updateInPlace((arr) => arr.push(42));
+
+// Get the value
+console.log(versionedArray.get());
+
+// Check its version
+console.log(versionedArray.version);
+```

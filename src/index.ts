@@ -8,3 +8,4 @@ export * from "./reusable-pool";
 export * from "./rolling-average";
 export * from "./throttled-value";
 export * from "./value-change-helper";
+export * from "./versioned-value";
