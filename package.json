@@ -1,6 +1,6 @@
 {
     "name": "@remvst/optimization",
-    "version": "1.7.0",
+    "version": "1.8.0",
     "description": "",
     "main": "lib/cjs/index.js",
     "exports": {
@@ -18,7 +18,9 @@
     },
     "author": "Rémi Vansteelandt",
     "license": "UNLICENSED",
-    "dependencies": {},
+    "dependencies": {
+        "@remvst/geometry": "^2.9.0"
+    },
     "devDependencies": {
         "@types/jasmine": "^4.3.0",
         "@types/node": "^18.11.5",

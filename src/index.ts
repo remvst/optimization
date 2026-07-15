@@ -4,6 +4,7 @@ export * from "./lazy-pool";
 export * from "./multi-value-change-helper";
 export * from "./object-id";
 export * from "./operation-queue";
+export * from "./quad-tree";
 export * from "./reusable-pool";
 export * from "./rolling-average";
 export * from "./throttled-action";
