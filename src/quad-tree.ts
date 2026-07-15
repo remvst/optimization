@@ -33,7 +33,7 @@ export class QuadTree<T> {
     }
 
     insert(object: T, area: Rectangle) {
-        this.root?.insert(object, area);
+        this.root.insert(object, area);
     }
 
     *query(area: Rectangle): Iterable<T> {
@@ -144,18 +144,18 @@ class QuadTreeNode<T> {
             return;
         }
 
-        const inNorthWest = this.northWest?.area.intersects(area) ? 1 : 0;
-        const inNorthEast = this.northEast?.area.intersects(area) ? 1 : 0;
-        const inSouthWest = this.southWest?.area.intersects(area) ? 1 : 0;
-        const inSouthEast = this.southEast?.area.intersects(area) ? 1 : 0;
+        const inNorthWest = this.northWest!.area.intersects(area) ? 1 : 0;
+        const inNorthEast = this.northEast!.area.intersects(area) ? 1 : 0;
+        const inSouthWest = this.southWest!.area.intersects(area) ? 1 : 0;
+        const inSouthEast = this.southEast!.area.intersects(area) ? 1 : 0;
 
         const count = inNorthWest + inNorthEast + inSouthWest + inSouthEast;
 
         if (count === 1) {
-            if (inNorthWest) this.northWest?.insert(object, area);
-            if (inNorthEast) this.northEast?.insert(object, area);
-            if (inSouthWest) this.southWest?.insert(object, area);
-            if (inSouthEast) this.southEast?.insert(object, area);
+            if (inNorthWest) this.northWest!.insert(object, area);
+            if (inNorthEast) this.northEast!.insert(object, area);
+            if (inSouthWest) this.southWest!.insert(object, area);
+            if (inSouthEast) this.southEast!.insert(object, area);
         } else {
             const item = this.createItem();
             item.object = object;
